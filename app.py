@@ -22,7 +22,6 @@ class Home(Resource):
         return str(alea)
 
 
-api.add_resource(Home,'/')
+app.config['SECRET_KEY'] = "Your_secret_string"
+api.add_resource(Home, '/')
 api.add_resource(Test, '/Test/<valeur_test>')
-
-
