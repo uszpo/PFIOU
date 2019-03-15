@@ -15,15 +15,13 @@ class Test(Resource):
             return False
 
 
+class Home(Resource):
+    def get(self):
+        alea = random.randint(1, 100)
+        session['aleatoire'] = alea
+        return str(alea)
+
+
+app.config['SECRET_KEY'] = "Your_secret_string"
+api.add_resource(Home, '/')
 api.add_resource(Test, '/Test/<valeur_test>')
-
-@app.route('/')
-def creer_alea():
-    alea = random.randint(1, 100)
-    session['aleatoire'] = alea
-    return str(alea)
-
-
-if __name__ == '__main__':
-    app.secret_key = 'super secret key'
-    app.run()
