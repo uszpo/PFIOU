@@ -1,4 +1,4 @@
-from flask import request, Flask, session
+from flask import request, Flask, session, render_template
 from flask_restful import Resource, Api
 from flask import jsonify
 import random
@@ -14,14 +14,16 @@ class Test(Resource):
         else:
             return False
 
-
-class Home(Resource):
-    def get(self):
+@app.route('/')
+def get():
+    if request.method == 'GET':
         alea = random.randint(1, 100)
         session['aleatoire'] = alea
-        return str(alea)
+        return render_template("hello.html")
+    else:
+        pass # TODO http://flask.pocoo.org/docs/1.0/quickstart/#rendering-templates
 
 
 app.config['SECRET_KEY'] = "Your_secret_string"
-api.add_resource(Home, '/')
-api.add_resource(Test, '/Test/<valeur_test>')
+
+
