@@ -9,8 +9,9 @@ def hello(valeur_test = None):
         alea = random.randint(1, 100)
         session['aleatoire'] = alea
         return render_template("hello.html")
-    else:
-        return render_template("test.html") # TODO http://flask.pocoo.org/docs/1.0/quickstart/#rendering-templates
+    elif request.method == 'POST':
+        valeur_test = request.form.getlist('valeur_test')
+        return render_template("test.html", valeur_test = valeur_test) # TODO http://flask.pocoo.org/docs/1.0/quickstart/#rendering-templates
 
 
 app.config['SECRET_KEY'] = "Your_secret_string"
