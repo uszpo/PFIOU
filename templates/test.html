@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>
+        {% if valeur_test != session['aleatoire'] %}
+            {% if valeur_test < session['aleatoire'] %}
+                <p>Trop petit</p>
+            {% elif valeur_test > session['aleatoire'] %}
+                <p>Trop grand</p>
+            <form method="post" action="./">
+            <label for="name">Balance ton chiffre :</label>
+            <input type="text" id="name" name="name">
+            {% endif %}
+        </form>
+        {% else %}
+            <p>Tu as gagné !</p>
+        {% endif %}
+    </p>
+</body>
+</html>
